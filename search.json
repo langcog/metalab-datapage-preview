@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "validator.html",
+    "href": "validator.html",
+    "title": "Dataset Validator",
+    "section": "",
+    "text": "Coming soon in this preview: validate a candidate MetaLab dataset (CSV upload) against the field specification, entirely in your browser."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "MetaLab encourages researchers to use data available on its website. For example, you can cite meta-analytic results, or download datasets and conduct custom analyses. Before using MetaLab data in your publication, please cite the dataset(s) you use (each dataset’s citation appears on its page) and the MetaLab platform papers below."
+  },
+  {
+    "objectID": "publications.html#citation-policy",
+    "href": "publications.html#citation-policy",
+    "title": "Publications",
+    "section": "",
+    "text": "MetaLab encourages researchers to use data available on its website. For example, you can cite meta-analytic results, or download datasets and conduct custom analyses. Before using MetaLab data in your publication, please cite the dataset(s) you use (each dataset’s citation appears on its page) and the MetaLab platform papers below."
+  },
+  {
+    "objectID": "publications.html#papers-about-metalab",
+    "href": "publications.html#papers-about-metalab",
+    "title": "Publications",
+    "section": "Papers about MetaLab",
+    "text": "Papers about MetaLab\nBergmann, C., Tsuji, S., Piccinini, P.E., Lewis, M.L., Braginsky, M., Frank, M.C., & Cristia, A. (2018). Promoting replicability in developmental research through meta-analyses: Insights from language acquisition research. Child Development, 89, 1996-2009. DOI: 10.1111/cdev.13079 [Repository]\nCao, A., Lewis, M., Tsuji, S., Bergmann, C., Cristia, A., & Frank, M.C. (2025). Estimating age-related change in infants’ linguistic and cognitive development using (meta-)meta-analysis. Developmental Science, 28(4), e70028. DOI: 10.1111/desc.70028 [Repository]\nTsuji, S., Bergmann, C., & Cristia, A. (2014). Community-augmented meta-analyses: Toward cumulative data assessment. Perspectives on Psychological Science, 9(6), 661-665. DOI: 10.1177/1745691614552498"
+  },
+  {
+    "objectID": "publications.html#papers-that-use-metalab-data",
+    "href": "publications.html#papers-that-use-metalab-data",
+    "title": "Publications",
+    "section": "Papers that use MetaLab data",
+    "text": "Papers that use MetaLab data\nBergmann, C., Tsuji, S., & Cristia, A. (2017). Top-down versus bottom-up theories of phonological acquisition: A big data approach. In: Proceedings of Interspeech 2017, pp. 2013–2016. DOI: 10.21437/Interspeech.2017-1443\nLewis, M. L., Braginsky, M., Tsuji, S., Bergmann, C., Piccinini, P. E., Cristia, A., & Frank, M. C. (2017). A quantitative synthesis of early language acquisition using meta-analysis. DOI: 10.17605/OSF.IO/HTSJM [Preprint]\nMathur, M. B., & VanderWeele, T. J. (2020). Estimating publication bias in meta‐analyses of peer‐reviewed studies: A meta‐meta‐analysis across disciplines and journal tiers. Research Synthesis Methods. DOI: 10.1002/jrsm.1464\nMathur, M. B., & VanderWeele, T. J. (2020). Sensitivity analysis for publication bias in meta‐analyses. Journal of the Royal Statistical Society. Series C, Applied Statistics, 69(5), 1091. DOI: 10.1111/rssc.12440\nTsuji, S. & Cristia, A. (2017). Which acoustic and phonological factors shape infants’ vowel discrimination? Exploiting natural variation in InPhonDB. In: Proceedings of Interspeech 2017, pp. 2108-2112. DOI: 10.21437/Interspeech.2017-1468\nTsuji, S., Cristia, A., Frank, M. C., & Bergmann, C. (2020). Addressing publication bias in meta-analysis. Zeitschrift für Psychologie, 228, 50-61. DOI: 10.1027/2151-2604/a000393"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MetaLab",
+    "section": "",
+    "text": "Interactive, community-augmented meta-analysis tools for cognitive development research\n\nExplore the data Browse datasets\n\n\n\n\nstats = d3.json(\"slices/stats.json\")\n\nhtml`&lt;p&gt;The MetaLab database contains\n&lt;span class=\"stat-strong\"&gt;${stats.n_effect_sizes.toLocaleString()} effect sizes&lt;/span&gt;\nfrom &lt;span class=\"stat-strong\"&gt;${stats.n_datasets} meta-analyses&lt;/span&gt; across\ntwo domains of cognitive development, based on data from\n&lt;span class=\"stat-strong\"&gt;${stats.n_papers.toLocaleString()} papers&lt;/span&gt; and\n&lt;span class=\"stat-strong\"&gt;${stats.n_subjects.toLocaleString()} subjects&lt;/span&gt;.&lt;/p&gt;\n&lt;p style=\"font-size: 0.85rem; color: #777;\"&gt;Data release ${stats.source_release}\n· &lt;a href=\"https://redivis.com/datasets/81tq-9ewzpdvz0\"&gt;versioned archive on Redivis&lt;/a&gt;&lt;/p&gt;`"
+  },
+  {
+    "objectID": "index.html#what-is-metalab",
+    "href": "index.html#what-is-metalab",
+    "title": "MetaLab",
+    "section": "What is MetaLab?",
+    "text": "What is MetaLab?\nMetaLab is a collection of community-augmented meta-analyses of language acquisition and cognitive development. Anyone can use the data to explore phenomena in early development, plan a study with meta-analytically grounded power analyses, or contribute new effect sizes to a growing, curated database.\n\n\nExplore\nInteractive visualizations of every dataset: effect sizes across age, funnel plots, forest plots, and moderator analyses.\n\n\nPlan\nMeta-analytic power analysis: how many participants do you need, given everything the literature already knows about your effect?\n\n\nContribute\nAdd new effect sizes or datasets — see the contribution documentation and the dataset validator."
+  },
+  {
+    "objectID": "datasets.html",
+    "href": "datasets.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "Each MetaLab dataset is a curated meta-analysis of a phenomenon in early language or cognitive development. Click a dataset to explore it interactively; full data for every dataset can be downloaded on its page or from the versioned archive on Redivis.\n\nregistry = d3.json(\"slices/datasets.json\")\ndomains = ([\n  { id: \"early_language\", title: \"Early language\",\n    desc: \"How do children learn their native language?\" },\n  { id: \"cognitive_development\", title: \"Cognitive development\",\n    desc: \"What is the nature of children's understanding?\" }\n])\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`${domains.map((dom) =&gt; html`\n  &lt;h2&gt;${dom.title}&lt;/h2&gt;\n  &lt;p&gt;${dom.desc}&lt;/p&gt;\n  &lt;div class=\"dataset-grid\"&gt;\n    ${registry.filter((d) =&gt; d.domain === dom.id).map((d) =&gt; html`\n      &lt;div class=\"dataset-card\"&gt;\n        &lt;h3&gt;&lt;a href=\"explorer.html?dataset=${encodeURIComponent(d.short_name)}\"&gt;${d.name}&lt;/a&gt;&lt;/h3&gt;\n        &lt;div class=\"card-desc\"&gt;${d.short_desc ?? \"\"}&lt;/div&gt;\n        &lt;div class=\"card-stats\"&gt;${d.num_papers} papers · ${d.num_experiments} effect sizes · ${d.num_subjects.toLocaleString()} subjects&lt;/div&gt;\n        ${d.sheet_status === \"unavailable_upstream\"\n          ? html`&lt;div class=\"card-frozen\"&gt;frozen at ${d.data_as_of} (source sheet unavailable)&lt;/div&gt;`\n          : \"\"}\n      &lt;/div&gt;`)}\n  &lt;/div&gt;`)}`"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About MetaLab",
+    "section": "",
+    "text": "MetaLab is a collection of community-augmented meta-analyses (Tsuji, Bergmann, & Cristia, 2014) of phenomena in early language acquisition and cognitive development. Each dataset codes the published (and sometimes unpublished) literature on one phenomenon into a standardized effect-size format, so that anyone can explore the evidence, plan well-powered studies, and contribute new data as the literature grows."
+  },
+  {
+    "objectID": "about.html#the-data",
+    "href": "about.html#the-data",
+    "title": "About MetaLab",
+    "section": "The data",
+    "text": "The data\n\nEvery effect size is standardized to Cohen’s d (with Hedges’ g, Pearson’s r, and log odds conversions) with variances, following the formulas documented in the metalabr package.\nDatasets are curated in spreadsheets by their curators, validated against the MetaLab field specification, and released as versioned snapshots on Redivis: datapages.metalab. Analyses on this site run from the released data, so results are citable and reproducible against a specific release.\nThe current release is shown on the home page; release notes document exactly what changed in each version."
+  },
+  {
+    "objectID": "about.html#using-metalab-data",
+    "href": "about.html#using-metalab-data",
+    "title": "About MetaLab",
+    "section": "Using MetaLab data",
+    "text": "Using MetaLab data\nYou can use MetaLab data in three ways:\n\nThis site — every visualization has a data table and CSV download.\nRedivis — query or download any table from the versioned archive.\nR — the metalabr package provides get_metalab_data() against released versions.\n\nBefore using MetaLab data in a publication, please cite the dataset(s) you use (citations appear on each dataset’s page) and the platform papers listed under Publications."
+  },
+  {
+    "objectID": "about.html#contributing",
+    "href": "about.html#contributing",
+    "title": "About MetaLab",
+    "section": "Contributing",
+    "text": "Contributing\nNew datasets and updates to existing datasets are welcome! The validator checks a candidate dataset against the MetaLab field specification. Contact the team to get started."
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About MetaLab",
+    "section": "License",
+    "text": "License\nUnless otherwise noted, MetaLab and its datasets are licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "explorer.html",
+    "href": "explorer.html",
+    "title": "Visualizations",
+    "section": "",
+    "text": "Explore any MetaLab dataset interactively: effect sizes across age, and a funnel plot for publication-bias diagnostics. Pick a dataset and an effect-size measure; data loads in your browser.\n\n  \n  Loading data…\n\n\n// call once the first visualization has rendered\nclear_loading = () =&gt; document.getElementById(\"ml-loading\")?.remove()\n\n\n\n\n\n\n\nloess_points = (data, { x = \"x\", y = \"y\", w = null, span = 1, grid = 80 } = {}) =&gt; {\n  const wf = typeof w === \"function\" ? w : w ? (d) =&gt; +d[w] : () =&gt; 1;\n  const pts = data\n    .map((d) =&gt; ({ x: +d[x], y: +d[y], w: wf(d) }))\n    .filter((d) =&gt; Number.isFinite(d.x) && Number.isFinite(d.y) && Number.isFinite(d.w))\n    .sort((a, b) =&gt; a.x - b.x);\n  if (pts.length &lt; 4) return [];\n\n  const k = Math.max(2, Math.ceil(span * pts.length));\n  const x0 = pts[0].x, x1 = pts[pts.length - 1].x;\n  const out = [];\n  for (let i = 0; i &lt;= grid; i++) {\n    const xt = x0 + (x1 - x0) * (i / grid);\n    const dists = pts.map((p) =&gt; Math.abs(p.x - xt)).sort((a, b) =&gt; a - b);\n    const dmax = dists[Math.min(k, dists.length) - 1] || 1e-9;\n    let sw = 0, swx = 0, swy = 0, swxx = 0, swxy = 0;\n    for (const p of pts) {\n      const u = Math.abs(p.x - xt) / dmax;\n      if (u &gt;= 1) continue;\n      const tw = Math.pow(1 - Math.pow(u, 3), 3) * p.w;\n      sw += tw; swx += tw * p.x; swy += tw * p.y;\n      swxx += tw * p.x * p.x; swxy += tw * p.x * p.y;\n    }\n    if (sw &lt;= 0) continue;\n    const denom = sw * swxx - swx * swx;\n    let yt;\n    if (Math.abs(denom) &lt; 1e-12) yt = swy / sw;\n    else {\n      const b = (sw * swxy - swx * swy) / denom;\n      const a = (swy - b * swx) / sw;\n      yt = a + b * xt;\n    }\n    out.push({ [x]: xt, [y]: yt });\n  }\n  return out;\n}\n\n// weighted least squares line, matching geom_smooth(method=\"lm\",\n// aes(weight = 1/es_var)); returns endpoints\nwls_points = (data, { x = \"x\", y = \"y\", w = null } = {}) =&gt; {\n  const wf = typeof w === \"function\" ? w : w ? (d) =&gt; +d[w] : () =&gt; 1;\n  const pts = data\n    .map((d) =&gt; ({ x: +d[x], y: +d[y], w: wf(d) }))\n    .filter((d) =&gt; Number.isFinite(d.x) && Number.isFinite(d.y) && Number.isFinite(d.w));\n  if (pts.length &lt; 3) return [];\n  let sw = 0, swx = 0, swy = 0, swxx = 0, swxy = 0;\n  for (const p of pts) {\n    sw += p.w; swx += p.w * p.x; swy += p.w * p.y;\n    swxx += p.w * p.x * p.x; swxy += p.w * p.x * p.y;\n  }\n  const denom = sw * swxx - swx * swx;\n  if (Math.abs(denom) &lt; 1e-12) return [];\n  const b = (sw * swxy - swx * swy) / denom;\n  const a = (swy - b * swx) / sw;\n  const xs = pts.map((p) =&gt; p.x);\n  const x0 = Math.min(...xs), x1 = Math.max(...xs);\n  return [{ [x]: x0, [y]: a + b * x0 }, { [x]: x1, [y]: a + b * x1 }];\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n// input styling adapted from levante-datapage: pill labels, borderless\n// rounded selects (scoped to the ojs namespace class)\nojs_ns = Inputs.text().classList[0]\n\n\n\n\n\n\n\nhtml`&lt;style&gt;\n  .${ojs_ns} div label {\n    background-color: #eef2f6;\n    padding: 0.2rem 0.5rem;\n    border-radius: 0.4rem;\n    margin-bottom: 0.25rem;\n    width: auto;\n  }\n\n  .${ojs_ns} select,\n  .${ojs_ns} input[type=\"text\"],\n  .${ojs_ns} input[type=\"file\"] {\n    background-color: #fff;\n    border: 1px solid #d8dee4;\n    border-radius: 0.4rem;\n    padding: 0.2rem 0.4rem;\n  }\n\n  .${ojs_ns} input[type=\"checkbox\"] {\n    accent-color: #2780e3;\n    margin-bottom: 0;\n  }\n&lt;/style&gt;`\n\n\n\n\n\n\n\ndownload_csv = (rows, filename) =&gt; {\n  if (!rows || !rows.length) return html`&lt;span&gt;&lt;/span&gt;`;\n  const cols = Object.keys(rows[0]);\n  const esc = (v) =&gt; {\n    const s = String(v ?? \"\");\n    return /[\",\\n]/.test(s) ? '\"' + s.replace(/\"/g, '\"\"') + '\"' : s;\n  };\n  const csv = [cols.join(\",\"), ...rows.map((r) =&gt; cols.map((c) =&gt; esc(r[c])).join(\",\"))].join(\"\\n\");\n  const url = URL.createObjectURL(new Blob([csv], { type: \"text/csv\" }));\n  return html`&lt;a class=\"btn btn-sm btn-outline-primary\" href=${url} download=${filename}&gt;Download CSV&lt;/a&gt;`;\n}\n\n\n\n\n\n\n\nregistry = d3.json(\"slices/datasets.json\")\n\nes_choices = new Map([\n  [\"Hedges' g\", \"g\"], [\"Cohen's d\", \"d\"], [\"Pearson's r\", \"r\"], [\"Log odds\", \"log_odds\"]\n])\n\nes_labels = ({ g: \"Hedges' g\", d: \"Cohen's d\", r: \"Pearson's r\", log_odds: \"Log odds\" })\n\nsolar_blue = \"#268bd2\"\n\ndomain_titles = new Map([\n  [\"early_language\", \"Early language\"],\n  [\"cognitive_development\", \"Cognitive development\"]\n])\n\nurl_dataset = new URLSearchParams(location.search).get(\"dataset\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof domain = Inputs.select([...domain_titles.keys()], {\n  label: \"Domain\",\n  format: (d) =&gt; domain_titles.get(d),\n  value: url_dataset\n    ? registry.find((d) =&gt; d.short_name === url_dataset)?.domain\n    : \"early_language\"\n})\n\nviewof dataset_name = Inputs.select(\n  registry.filter((d) =&gt; d.domain === domain).map((d) =&gt; d.name),\n  { label: \"Dataset\",\n    value: url_dataset\n      ? registry.find((d) =&gt; d.short_name === url_dataset)?.name\n      : undefined }\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndataset_meta = registry.find((d) =&gt; d.name === dataset_name)\n\nviewof es_type = Inputs.select(es_choices, { label: \"Effect size type\", value: \"g\" })\n\nviewof subset_choice = {\n  const subsets = dataset_meta.subset ?? [];\n  return Inputs.radio([\"All data\", ...subsets], {\n    label: subsets.length ? \"Subset\" : \"\",\n    value: \"All data\"\n  });\n}\n\nviewof curve_type = Inputs.radio(new Map([[\"LOESS\", \"loess\"], [\"Linear\", \"lm\"]]), {\n  label: \"Smoothing curve\",\n  value: \"loess\"\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"font-size: 0.82rem; color: #555; margin-top: 0.75rem;\"&gt;\n  &lt;p&gt;${dataset_meta.short_desc ?? \"\"}&lt;/p&gt;\n  &lt;p&gt;&lt;em&gt;Citation:&lt;/em&gt; ${dataset_meta.full_citation ?? dataset_meta.citation ?? \"\"}&lt;/p&gt;\n  ${dataset_meta.sheet_status === \"unavailable_upstream\"\n    ? html`&lt;p class=\"card-frozen\"&gt;This dataset is frozen at its ${dataset_meta.data_as_of} state (source sheet unavailable).&lt;/p&gt;` : \"\"}\n  &lt;p&gt;&lt;a href=\"resources/csv/${dataset_meta.filename}.csv\" download&gt;Download full dataset (CSV)&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nslice_all = d3.json(`slices/es/${dataset_meta.short_name}.json`)\n\nslice = subset_choice === \"All data\"\n  ? slice_all\n  : slice_all.filter((d) =&gt; d[subset_choice] === true)\n\nes_col = `${es_type}_calc`\nes_var_col = `${es_type}_var_calc`\n\n// rows with a defined ES of the selected type and (for the scatter) age;\n// mean_age &lt; 4000 days ~ 131.4 months, matching the legacy app's filter\nplot_data = slice.filter((d) =&gt;\n  Number.isFinite(+d[es_col]) && Number.isFinite(+d[es_var_col]))\nage_data = plot_data.filter((d) =&gt;\n  Number.isFinite(+d.mean_age_months) && +d.mean_age_months &lt; 4000 / 30.44)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmodel_note = {\n  clear_loading();\n  const wmean = d3.sum(plot_data, (d) =&gt; +d[es_col] / +d[es_var_col]) /\n    d3.sum(plot_data, (d) =&gt; 1 / +d[es_var_col]);\n  return html`&lt;div style=\"display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.75rem;\"&gt;\n    &lt;div class=\"value-box\"&gt;&lt;div class=\"vb-value\"&gt;${plot_data.length}&lt;/div&gt;\n      &lt;div class=\"vb-label\"&gt;Conditions&lt;/div&gt;&lt;/div&gt;\n    &lt;div class=\"value-box\"&gt;&lt;div class=\"vb-value\"&gt;${wmean.toFixed(2)}&lt;/div&gt;\n      &lt;div class=\"vb-label\"&gt;Weighted mean ${es_labels[es_type]}&lt;br&gt;(multilevel model: coming soon)&lt;/div&gt;&lt;/div&gt;\n  &lt;/div&gt;`;\n}\n\n\n\n\n\n\n\nEffect sizes across age\n\nPlotTable\n\n\n\nscatter_plot = {\n  if (dataset_meta.longitudinal)\n    return html`&lt;p style=\"color:#777;\"&gt;&lt;em&gt;This is a longitudinal dataset;\n      effect sizes do not correspond to single test ages, so the age scatter\n      is not shown.&lt;/em&gt;&lt;/p&gt;`;\n  const inv_var = (d) =&gt; 1 / Math.max(+d[es_var_col], 1e-9);\n  const curve = curve_type === \"loess\"\n    ? loess_points(age_data, { x: \"mean_age_months\", y: es_col, w: inv_var, span: 1 })\n    : wls_points(age_data, { x: \"mean_age_months\", y: es_col, w: inv_var });\n  return Plot.plot({\n    width: 750, height: 420,\n    marginLeft: 55,\n    x: { label: \"Mean subject age (months)\" },\n    y: { label: `Effect size (${es_labels[es_type]})` },\n    marks: [\n      Plot.ruleY([0], { strokeDasharray: \"4,3\", stroke: \"#999\" }),\n      Plot.dot(age_data, {\n        x: \"mean_age_months\", y: es_col, r: (d) =&gt; Math.sqrt(+d.n || 1),\n        fill: solar_blue, fillOpacity: 0.5,\n        title: (d) =&gt; `${d.short_cite}\\nexpt ${d.expt_num ?? \"\"} · n=${d.n}\\n${es_labels[es_type]} = ${(+d[es_col]).toFixed(2)}`,\n        tip: true\n      }),\n      Plot.line(curve, { x: \"mean_age_months\", y: es_col, stroke: solar_blue, strokeWidth: 2 })\n    ]\n  });\n}\n\n\n\n\n\n\n\n\n\nInputs.table(plot_data.map((d) =&gt; ({\n  study: d.short_cite, expt: d.expt_num, n: d.n,\n  age_months: +(+d.mean_age_months).toFixed(1),\n  es: +(+d[es_col]).toFixed(3), es_var: +(+d[es_var_col]).toFixed(4),\n  method: d.method, exposure: d.exposure_phase\n})), { rows: 18 })\n\n\n\n\n\n\n\ndownload_csv(plot_data, `${dataset_meta.short_name}_${es_type}.csv`)\n\n\n\n\n\n\n\n\n\n\n\nFunnel plot of bias in effect sizes\n\nPlotTable\n\n\n\nfunnel_plot = {\n  const pts = plot_data.map((d) =&gt; ({\n    es: +d[es_col], se: Math.sqrt(+d[es_var_col]),\n    cite: d.short_cite, expt: d.expt_num\n  }));\n  const center = d3.mean(pts, (d) =&gt; d.es);\n  const L = 1.05 * d3.max(pts, (d) =&gt; d.se);\n  // funnel triangles: at depth se, the z% region spans center ± z*se\n  const grid = d3.range(0, L * 1.0001, L / 60);\n  const tri95 = grid.map((s) =&gt; ({ se: s, x1: center - 1.96 * s, x2: center + 1.96 * s }));\n  const tri99 = grid.map((s) =&gt; ({ se: s, x1: center - 2.58 * s, x2: center + 2.58 * s }));\n  const xmin = Math.min(center - 2.58 * L, d3.min(pts, (d) =&gt; d.es));\n  const xmax = Math.max(center + 2.58 * L, d3.max(pts, (d) =&gt; d.es));\n  return Plot.plot({\n    width: 750, height: 420,\n    marginLeft: 55,\n    x: { label: `Effect size (${es_labels[es_type]})`, domain: [xmin, xmax] },\n    y: { label: \"Standard error\", domain: [0, L], reverse: true },\n    marks: [\n      Plot.rect([{}], { x1: xmin, x2: xmax, y1: 0, y2: L, fill: \"#e6e6e6\" }),\n      Plot.areaX(tri99, { y: \"se\", x1: \"x1\", x2: \"x2\", fill: \"#fff\", fillOpacity: 0.5 }),\n      Plot.areaX(tri95, { y: \"se\", x1: \"x1\", x2: \"x2\", fill: \"#fff\", fillOpacity: 0.5 }),\n      Plot.ruleX([center], { strokeDasharray: \"2,2\", stroke: \"#333\" }),\n      Plot.dot(pts, {\n        x: \"es\", y: \"se\", fill: solar_blue, fillOpacity: 0.7,\n        title: (d) =&gt; `${d.cite}\\nexpt ${d.expt ?? \"\"}\\nes = ${d.es.toFixed(2)}, se = ${d.se.toFixed(2)}`,\n        tip: true\n      })\n    ]\n  });\n}\n\n\n\n\n\n\n\n\n\nInputs.table(plot_data.map((d) =&gt; ({\n  study: d.short_cite, expt: d.expt_num,\n  es: +(+d[es_col]).toFixed(3), se: +Math.sqrt(+d[es_var_col]).toFixed(3)\n})), { rows: 18 })"
+  },
+  {
+    "objectID": "power-analysis.html",
+    "href": "power-analysis.html",
+    "title": "Power Analysis",
+    "section": "",
+    "text": "Coming soon in this preview: meta-analytically grounded power analysis — the estimated effect size for your phenomenon (optionally conditioned on age, method, and exposure phase) and the sample size needed to detect it."
+  },
+  {
+    "objectID": "team.html",
+    "href": "team.html",
+    "title": "Team",
+    "section": "",
+    "text": "MetaLab is a community project: datasets are contributed and maintained by researchers across many labs, coordinated by the team below. Interested in contributing? See About or write to any of the leaders."
+  },
+  {
+    "objectID": "team.html#leaders",
+    "href": "team.html#leaders",
+    "title": "Team",
+    "section": "Leaders",
+    "text": "Leaders\n\nChristina Bergmann — Osnabrück University of Applied Sciences & MPI for Psycholinguistics · chbergma@gmail.com\nSho Tsuji — The University of Tokyo · tsujish@gmail.com"
+  },
+  {
+    "objectID": "team.html#governing-board",
+    "href": "team.html#governing-board",
+    "title": "Team",
+    "section": "Governing board",
+    "text": "Governing board\n\nAlejandrina Cristia — École Normale Supérieure · alecristia@gmail.com\nMichael C. Frank — Stanford University · mcfrank@stanford.edu\nMolly Lewis · mollyllewis@gmail.com"
+  },
+  {
+    "objectID": "team.html#team",
+    "href": "team.html#team",
+    "title": "Team",
+    "section": "Team",
+    "text": "Team\n\nSara El-Shawa · selshawa96@gmail.com\nLoretta Gasparini — Murdoch Children’s Research Institute · gasparini.lorett@gmail.com\nErik Iverson · erikriverson@gmail.com"
+  },
+  {
+    "objectID": "team.html#curators",
+    "href": "team.html#curators",
+    "title": "Team",
+    "section": "Curators",
+    "text": "Curators\n\nAngeline Tsui — University of Ottawa · atsui029@uottawa.ca\nCécile Issard — École Normale Supérieure · cecile.issard@gmail.com\nFleur Vissers — Tilburg University · f.m.h.g.vissers@gmail.com\nFrancesco Margoni — Università di Trento · francesco.margoni@unitn.it\nHugh Rabagliati — University of Edinburgh · hugh.rabagliati@ed.ac.uk\nKatie Von Holzen — Technical University of Dortmund · katie.m.vonholzen@gmail.com\nRodrigo Dal Ben — Concordia University · dalbenwork@gmail.com\nPriya Silverstein · priyasilverstein@gmail.com"
+  },
+  {
+    "objectID": "team.html#alumni",
+    "href": "team.html#alumni",
+    "title": "Team",
+    "section": "Alumni",
+    "text": "Alumni\nJulia Carbajal, Mika Braginsky, Page Piccinini, Alessandro Sanchez"
+  }
+]
