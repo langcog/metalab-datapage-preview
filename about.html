@@ -122,15 +122,15 @@ if (document.visibilityState === "hidden") {
     <a class="nav-link" href="./datasets.html"> 
 <span class="menu-text">Datasets</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./explorer.html"> 
-<span class="menu-text">Visualizations</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analyses" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Analyses</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-analyses">    
+        <li>
+    <a class="dropdown-item" href="./explorer.html">
+ <span class="dropdown-text">Visualizations</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="./age-curves.html">
  <span class="dropdown-text">Age Curves</span></a>
@@ -139,13 +139,6 @@ if (document.visibilityState === "hidden") {
     <a class="dropdown-item" href="./replicability.html">
  <span class="dropdown-text">Replicability</span></a>
   </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
         <li>
     <a class="dropdown-item" href="./power-analysis.html">
  <span class="dropdown-text">Power Analysis</span></a>
@@ -165,18 +158,8 @@ if (document.visibilityState === "hidden") {
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./team.html"> 
-<span class="menu-text">Team</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./about.html" aria-current="page"> 
 <span class="menu-text">About</span></a>
-  </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./news.html"> 
-<span class="menu-text">Changelog</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -213,35 +196,120 @@ if (document.visibilityState === "hidden") {
 
 
 
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">About</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Team</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Changelog</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>MetaLab is a collection of <strong>community-augmented meta-analyses</strong> (Tsuji, Bergmann, &amp; Cristia, 2014) of phenomena in early language acquisition and cognitive development. Each dataset codes the published (and sometimes unpublished) literature on one phenomenon into a standardized effect-size format, so that anyone can explore the evidence, plan well-powered studies, and contribute new data as the literature grows.</p>
-<section id="the-data" class="level2">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
 <ul>
 <li>Every effect size is standardized to Cohen’s <em>d</em> (with Hedges’ <em>g</em>, Pearson’s <em>r</em>, and log odds conversions) with variances, following the formulas documented in the <a href="https://github.com/langcog/metalabr">metalabr</a> package.</li>
-<li>Datasets are curated in spreadsheets by their curators, validated against the MetaLab <a href="https://github.com/langcog/metalab/blob/main/metadata/spec.yaml">field specification</a>, and released as <strong>versioned snapshots</strong> on Redivis: <a href="https://redivis.com/datasets/81tq-9ewzpdvz0">datapages.metalab</a>. Analyses on this site run from the released data, so results are citable and reproducible against a specific release.</li>
+<li>Datasets are curated in spreadsheets by their curators, validated against the MetaLab <a href="https://github.com/langcog/metalab/blob/main/metadata/spec.yaml">field specification</a>, and released as <strong>versioned snapshots</strong> on Redivis: <a href="https://stanford.redivis.com/datasets/81tq-8dp5ge6b9">datapages.metalab</a>. Analyses on this site run from the released data, so results are citable and reproducible against a specific release.</li>
 <li>The current release is shown on the <a href="./index.html">home page</a>; release notes document exactly what changed in each version.</li>
 </ul>
 </section>
-<section id="using-metalab-data" class="level2">
-<h2 class="anchored" data-anchor-id="using-metalab-data">Using MetaLab data</h2>
+<section id="using-metalab-data" class="level3">
+<h3 class="anchored" data-anchor-id="using-metalab-data">Using MetaLab data</h3>
 <p>You can use MetaLab data in three ways:</p>
 <ol type="1">
 <li><strong>This site</strong> — every visualization has a data table and CSV download.</li>
-<li><strong>Redivis</strong> — query or download any table from the <a href="https://redivis.com/datasets/81tq-9ewzpdvz0">versioned archive</a>.</li>
+<li><strong>Redivis</strong> — query or download any table from the <a href="https://stanford.redivis.com/datasets/81tq-8dp5ge6b9">versioned archive</a>.</li>
 <li><strong>R</strong> — the <a href="https://github.com/langcog/metalabr">metalabr</a> package provides <code>get_metalab_data()</code> against released versions.</li>
 </ol>
 <p>Before using MetaLab data in a publication, please cite the dataset(s) you use (citations appear on each dataset’s page) and the platform papers listed under <a href="./publications.html">Publications</a>.</p>
 </section>
-<section id="contributing" class="level2">
-<h2 class="anchored" data-anchor-id="contributing">Contributing</h2>
-<p>New datasets and updates to existing datasets are welcome! The <a href="./validator.html">validator</a> checks a candidate dataset against the MetaLab field specification. Contact the <a href="./team.html">team</a> to get started.</p>
+<section id="contributing" class="level3">
+<h3 class="anchored" data-anchor-id="contributing">Contributing</h3>
+<p>New datasets and updates to existing datasets are welcome! The <a href="./validator.html">validator</a> checks a candidate dataset against the MetaLab field specification. Contact the team (see the Team tab) to get started.</p>
 </section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
+<section id="license" class="level3">
+<h3 class="anchored" data-anchor-id="license">License</h3>
 <p>Unless otherwise noted, MetaLab and its datasets are licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
-
-
 </section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>MetaLab is a community project: datasets are contributed and maintained by researchers across many labs, coordinated by the team below. Interested in contributing? See <a href="./about.html">About</a> or write to any of the leaders.</p>
+<section id="leaders" class="level3">
+<h3 class="anchored" data-anchor-id="leaders">Leaders</h3>
+<ul>
+<li><strong>Christina Bergmann</strong> — Osnabrück University of Applied Sciences &amp; MPI for Psycholinguistics · <a href="mailto:chbergma@gmail.com" class="email">chbergma@gmail.com</a></li>
+<li><strong>Sho Tsuji</strong> — The University of Tokyo · <a href="mailto:tsujish@gmail.com" class="email">tsujish@gmail.com</a></li>
+</ul>
+</section>
+<section id="governing-board" class="level3">
+<h3 class="anchored" data-anchor-id="governing-board">Governing board</h3>
+<ul>
+<li><strong>Alejandrina Cristia</strong> — École Normale Supérieure · <a href="mailto:alecristia@gmail.com" class="email">alecristia@gmail.com</a></li>
+<li><strong>Michael C. Frank</strong> — Stanford University · <a href="mailto:mcfrank@stanford.edu" class="email">mcfrank@stanford.edu</a></li>
+<li><strong>Molly Lewis</strong> · <a href="mailto:mollyllewis@gmail.com" class="email">mollyllewis@gmail.com</a></li>
+</ul>
+</section>
+<section id="team-1" class="level3">
+<h3 class="anchored" data-anchor-id="team-1">Team</h3>
+<ul>
+<li><strong>Sara El-Shawa</strong> · <a href="mailto:selshawa96@gmail.com" class="email">selshawa96@gmail.com</a></li>
+<li><strong>Loretta Gasparini</strong> — Murdoch Children’s Research Institute · <a href="mailto:gasparini.lorett@gmail.com" class="email">gasparini.lorett@gmail.com</a></li>
+<li><strong>Erik Iverson</strong> · <a href="mailto:erikriverson@gmail.com" class="email">erikriverson@gmail.com</a></li>
+</ul>
+</section>
+<section id="curators" class="level3">
+<h3 class="anchored" data-anchor-id="curators">Curators</h3>
+<ul>
+<li><strong>Angeline Tsui</strong> — University of Ottawa · <a href="mailto:atsui029@uottawa.ca" class="email">atsui029@uottawa.ca</a></li>
+<li><strong>Cécile Issard</strong> — École Normale Supérieure · <a href="mailto:cecile.issard@gmail.com" class="email">cecile.issard@gmail.com</a></li>
+<li><strong>Fleur Vissers</strong> — Tilburg University · <a href="mailto:f.m.h.g.vissers@gmail.com" class="email">f.m.h.g.vissers@gmail.com</a></li>
+<li><strong>Francesco Margoni</strong> — Università di Trento · <a href="mailto:francesco.margoni@unitn.it" class="email">francesco.margoni@unitn.it</a></li>
+<li><strong>Hugh Rabagliati</strong> — University of Edinburgh · <a href="mailto:hugh.rabagliati@ed.ac.uk" class="email">hugh.rabagliati@ed.ac.uk</a></li>
+<li><strong>Katie Von Holzen</strong> — Technical University of Dortmund · <a href="mailto:katie.m.vonholzen@gmail.com" class="email">katie.m.vonholzen@gmail.com</a></li>
+<li><strong>Rodrigo Dal Ben</strong> — Concordia University · <a href="mailto:dalbenwork@gmail.com" class="email">dalbenwork@gmail.com</a></li>
+<li><strong>Priya Silverstein</strong> · <a href="mailto:priyasilverstein@gmail.com" class="email">priyasilverstein@gmail.com</a></li>
+</ul>
+</section>
+<section id="alumni" class="level3">
+<h3 class="anchored" data-anchor-id="alumni">Alumni</h3>
+<p>Julia Carbajal, Mika Braginsky, Page Piccinini, Alessandro Sanchez</p>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="the-datapage-rebuild" class="level3">
+<h3 class="anchored" data-anchor-id="the-datapage-rebuild">2026 — the datapage rebuild</h3>
+<p>The MetaLab site was rebuilt as a static Quarto + Observable site backed by versioned data releases on <a href="https://stanford.redivis.com/datasets/81tq-8dp5ge6b9">Redivis</a>, replacing the Hugo site and the Shiny applications (whose hosting server had gone offline). The analyses now run in your browser from released data, so every number on the site is tied to a citable data version.</p>
+<section id="data-releases" class="level4">
+<h4 class="anchored" data-anchor-id="data-releases">Data releases</h4>
+<ul>
+<li><strong>2023.1</strong> (Redivis v1.0) — verbatim snapshot of the final legacy pipeline output (April 2023), exactly as previously served by the site and apps.</li>
+<li><strong>2026.1</strong> (Redivis v1.1) — fresh fetch of all live curator spreadsheets (August 2026). Effect sizes are identical to 2023.1 — the sheets had not changed. Seven datasets’ source spreadsheets no longer exist upstream (Mispronunciation sensitivity, Natural speech preference, Simple arithmetic competences, Familiar word recognition, Symbolic play, Abstract rule learning, Switch task); their data are carried forward unchanged from 2023.1 and marked in the <code>datasets</code> table (<code>sheet_status</code>, <code>data_as_of</code>).</li>
+</ul>
+</section>
+<section id="deliberate-changes-from-the-legacy-applications" class="level4">
+<h4 class="anchored" data-anchor-id="deliberate-changes-from-the-legacy-applications">Deliberate changes from the legacy applications</h4>
+<p>Fixes (behavior the legacy apps got wrong):</p>
+<ol type="1">
+<li><strong>Funnel-plot asymmetry test.</strong> The legacy visualization called <code>metafor::regtest()</code> on a multilevel (<code>rma.mv</code>) model, which always errored — the error was hidden by CSS, so no test was actually shown. The rebuilt funnel reports a proper Egger-style test: √v<sub>i</sub> added as a fixed-effect moderator to the same multilevel model.</li>
+<li><strong>Power simulation with a control group.</strong> The legacy simulation accidentally duplicated every simulated observation when the control group was enabled (a <code>factor()</code> construction bug), inflating the apparent significance of all tests. Each cell now contains exactly N independent draws.</li>
+<li><strong>Power-analysis model.</strong> The legacy power app fit a <em>single-level</em> random-effects model, inconsistent with the visualization app’s multilevel model on the same data (and with how the datasets are analyzed in publications). Both now use the same multilevel model (effect sizes nested in infant groups nested in papers). Estimated effect sizes — and therefore recommended sample sizes — can differ slightly from the legacy app.</li>
+<li><strong>Broken PDF download</strong> in the legacy power app (saved an empty file) is replaced by data downloads on every visualization.</li>
+<li><strong>Violin plot</strong> now works for every effect-size type (legacy silently supported only Hedges’ g).</li>
+</ol>
+<p>Documented approximations and constraints:</p>
+<ol start="6" type="1">
+<li><strong>Residual funnel plots</strong> (funnel with moderators selected) standardize residuals by the marginal standard error √(v<sub>i</sub> + Σσ²) rather than metafor’s <code>rstandard()</code> internals; positions can differ very slightly from the legacy plot.</li>
+<li><strong>Moderator analyses cover up to three simultaneous moderators</strong> (the models are precomputed offline for every dataset × subset × effect-size type × moderator combination; the legacy app allowed unbounded combinations by fitting on a live server).</li>
+<li><strong>Age filter.</strong> All analyses exclude effect sizes with mean age ≥ 4000 days (~131 months), as the legacy visualization did; the legacy <em>power</em> app did not apply this filter, so its estimates could differ trivially for datasets with very old samples.</li>
+<li><strong>Column rename</strong>: <code>rule.type</code> → <code>rule_type</code> (Abstract rule learning) — Redivis does not allow dots in column names.</li>
+</ol>
+</section>
+<section id="metalabr" class="level4">
+<h4 class="anchored" data-anchor-id="metalabr">metalabr</h4>
+<p>The R package is being updated to read released data versions from Redivis (<code>get_metalab_data(version = "current")</code>), with the Google-Sheets path retained for curators. See the <a href="https://github.com/langcog/metalabr">package repository</a>.</p>
+</section>
+</section>
+</div>
+</div>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -651,7 +719,7 @@ if (document.visibilityState === "hidden") {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p><a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="img-fluid" alt="Creative Commons Attribution 4.0 license"></a><br> Unless otherwise noted, MetaLab and its datasets are licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br> Data hosted on <a href="https://redivis.com/datasets/81tq-9ewzpdvz0">Redivis</a> · <a href="https://github.com/langcog/metalab">GitHub</a></p>
+<p><a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="img-fluid" alt="Creative Commons Attribution 4.0 license"></a><br> Unless otherwise noted, MetaLab and its datasets are licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br> Data hosted on <a href="https://stanford.redivis.com/datasets/81tq-8dp5ge6b9">Redivis</a> · <a href="https://github.com/langcog/metalab">GitHub</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
