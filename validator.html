@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -86,6 +121,8 @@ ul.task-list li input[type="checkbox"] {
 background: var(--bs-light);
       }
 </style>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script>
 // The Observable runtime schedules on requestAnimationFrame, which
 // never fires in hidden documents (prerendering, preview panes,
@@ -126,6 +163,40 @@ if (document.visibilityState === "hidden") {
     <a class="nav-link" href="./explorer.html"> 
 <span class="menu-text">Visualizations</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analyses" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analyses</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analyses">    
+        <li>
+    <a class="dropdown-item" href="./age-curves.html">
+ <span class="dropdown-text">Age Curves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./replicability.html">
+ <span class="dropdown-text">Replicability</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tools</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
+        <li>
+    <a class="dropdown-item" href="./power-analysis.html">
+ <span class="dropdown-text">Power Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./power-simulation.html">
+ <span class="dropdown-text">Power Simulation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./validator.html">
+ <span class="dropdown-text">Dataset Validator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./publications.html"> 
 <span class="menu-text">Publications</span></a>
@@ -137,6 +208,12 @@ if (document.visibilityState === "hidden") {
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./news.html"> 
+<span class="menu-text">Changelog</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -173,11 +250,236 @@ if (document.visibilityState === "hidden") {
 
 
 
-<p><em>Coming soon in this preview: validate a candidate MetaLab dataset (CSV upload) against the field specification, entirely in your browser.</em></p>
+<p>Check a candidate MetaLab dataset against the <a href="https://github.com/langcog/metalab/blob/main/metadata/spec.yaml">field specification</a> before contributing it. Everything runs in your browser — your data is not uploaded anywhere. Upload a CSV export of your coding spreadsheet (in Google Sheets: File → Download → Comma Separated Values), or paste CSV text.</p>
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="15" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">// input styling adapted from levante-datapage: pill labels, borderless</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">// rounded selects (scoped to the ojs namespace class)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ojs_ns <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>()<span class="op">.</span><span class="at">classList</span>[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="79" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 78;"><span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;style&gt;</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="vs">  .</span><span class="sc">${</span>ojs_ns<span class="sc">}</span><span class="vs"> div label {</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="vs">    background-color: #eef2f6;</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="vs">    padding: 0.2rem 0.5rem;</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="vs">    border-radius: 0.4rem;</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="vs">    margin-bottom: 0.25rem;</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="vs">    width: auto;</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="vs">  }</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="vs">  .</span><span class="sc">${</span>ojs_ns<span class="sc">}</span><span class="vs"> select,</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="vs">  .</span><span class="sc">${</span>ojs_ns<span class="sc">}</span><span class="vs"> input[type="text"],</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="vs">  .</span><span class="sc">${</span>ojs_ns<span class="sc">}</span><span class="vs"> input[type="file"] {</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="vs">    background-color: #fff;</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="vs">    border: 1px solid #d8dee4;</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="vs">    border-radius: 0.4rem;</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="vs">    padding: 0.2rem 0.4rem;</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="vs">  }</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="vs">  .</span><span class="sc">${</span>ojs_ns<span class="sc">}</span><span class="vs"> input[type="checkbox"] {</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="vs">    accent-color: #2780e3;</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="vs">    margin-bottom: 0;</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="vs">  }</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/style&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="98" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> d3<span class="op">.</span><span class="fu">json</span>(<span class="st">"slices/spec.json"</span>)</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a><span class="co">// validation rules ported from metalabr validate_metalab_dataset_field.R:</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="co">// - required fields must be present as columns</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="co">// - short_cite additionally: no missing values, max 60 characters</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="co">// - options fields: all non-missing values within the allowed options</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="co">//   (nullable fields excuse missing values)</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="co">// - numeric fields: numeric or entirely missing</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co">// - r and corr additionally: within [-1, 1]</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>validate_rows <span class="op">=</span> (rows) <span class="kw">=&gt;</span> {</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>rows <span class="op">||</span> <span class="op">!</span>rows<span class="op">.</span><span class="at">length</span>) <span class="cf">return</span> []<span class="op">;</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(<span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(rows[<span class="dv">0</span>]))<span class="op">;</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> isMissing <span class="op">=</span> (v) <span class="kw">=&gt;</span> v <span class="op">===</span> <span class="kw">null</span> <span class="op">||</span> v <span class="op">===</span> <span class="kw">undefined</span> <span class="op">||</span> <span class="bu">String</span>(v)<span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">""</span> <span class="op">||</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span>(v)<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toUpperCase</span>() <span class="op">===</span> <span class="st">"NA"</span><span class="op">;</span></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> results <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> f <span class="kw">of</span> spec) {</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>f<span class="op">.</span><span class="at">required</span>) <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> ok <span class="op">=</span> <span class="kw">true</span><span class="op">,</span> notes <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>cols<span class="op">.</span><span class="fu">has</span>(f<span class="op">.</span><span class="at">field</span>)) {</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>      ok <span class="op">=</span> <span class="kw">false</span><span class="op">;</span> notes<span class="op">.</span><span class="fu">push</span>(<span class="st">"column missing"</span>)<span class="op">;</span></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> vals <span class="op">=</span> rows<span class="op">.</span><span class="fu">map</span>((r) <span class="kw">=&gt;</span> r[f<span class="op">.</span><span class="at">field</span>])<span class="op">;</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> present <span class="op">=</span> vals<span class="op">.</span><span class="fu">filter</span>((v) <span class="kw">=&gt;</span> <span class="op">!</span><span class="fu">isMissing</span>(v))<span class="op">;</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (f<span class="op">.</span><span class="at">field</span> <span class="op">===</span> <span class="st">"short_cite"</span>) {</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> nMissing <span class="op">=</span> vals<span class="op">.</span><span class="at">length</span> <span class="op">-</span> present<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (nMissing <span class="op">&gt;</span> <span class="dv">0</span>) { ok <span class="op">=</span> <span class="kw">false</span><span class="op">;</span> notes<span class="op">.</span><span class="fu">push</span>(<span class="vs">`</span><span class="sc">${</span>nMissing<span class="sc">}</span><span class="vs"> missing value(s)`</span>)<span class="op">;</span> }</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> tooLong <span class="op">=</span> present<span class="op">.</span><span class="fu">filter</span>((v) <span class="kw">=&gt;</span> <span class="bu">String</span>(v)<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">60</span>)<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (tooLong <span class="op">&gt;</span> <span class="dv">0</span>) { ok <span class="op">=</span> <span class="kw">false</span><span class="op">;</span> notes<span class="op">.</span><span class="fu">push</span>(<span class="vs">`</span><span class="sc">${</span>tooLong<span class="sc">}</span><span class="vs"> value(s) over 60 characters`</span>)<span class="op">;</span> }</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (f<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"options"</span>) {</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> allowed <span class="op">=</span> <span class="kw">new</span> <span class="bu">Set</span>(</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>          (<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(f<span class="op">.</span><span class="at">options</span>) <span class="op">?</span> f<span class="op">.</span><span class="at">options</span> <span class="op">:</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(f<span class="op">.</span><span class="at">options</span> <span class="op">??</span> {}))</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">map</span>((o) <span class="kw">=&gt;</span> <span class="kw">typeof</span> o <span class="op">===</span> <span class="st">"object"</span> <span class="op">?</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(o)[<span class="dv">0</span>] <span class="op">:</span> <span class="bu">String</span>(o)))<span class="op">;</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> bad <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(present<span class="op">.</span><span class="fu">map</span>(<span class="bu">String</span>))]<span class="op">.</span><span class="fu">filter</span>((v) <span class="kw">=&gt;</span> <span class="op">!</span>allowed<span class="op">.</span><span class="fu">has</span>(v))<span class="op">;</span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (bad<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>          ok <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>          notes<span class="op">.</span><span class="fu">push</span>(<span class="vs">`invalid value(s): </span><span class="sc">${</span>bad<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}${</span>bad<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">5</span> <span class="op">?</span> <span class="st">", …"</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (f<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"numeric"</span>) {</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> nonNum <span class="op">=</span> present<span class="op">.</span><span class="fu">filter</span>((v) <span class="kw">=&gt;</span> <span class="op">!</span><span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(<span class="op">+</span><span class="bu">String</span>(v)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/,/g</span><span class="op">,</span> <span class="st">""</span>)))<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (nonNum <span class="op">&gt;</span> <span class="dv">0</span>) { ok <span class="op">=</span> <span class="kw">false</span><span class="op">;</span> notes<span class="op">.</span><span class="fu">push</span>(<span class="vs">`</span><span class="sc">${</span>nonNum<span class="sc">}</span><span class="vs"> non-numeric value(s)`</span>)<span class="op">;</span> }</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ([<span class="st">"r"</span><span class="op">,</span> <span class="st">"corr"</span>]<span class="op">.</span><span class="fu">includes</span>(f<span class="op">.</span><span class="at">field</span>)) {</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> bad <span class="op">=</span> present</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">map</span>((v<span class="op">,</span> idx) <span class="kw">=&gt;</span> ({ <span class="dt">v</span><span class="op">:</span> <span class="op">+</span>v<span class="op">,</span> <span class="dt">row</span><span class="op">:</span> idx <span class="op">+</span> <span class="dv">2</span> }))</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(d<span class="op">.</span><span class="at">v</span>) <span class="op">&amp;&amp;</span> (d<span class="op">.</span><span class="at">v</span> <span class="op">&lt;</span> <span class="op">-</span><span class="dv">1</span> <span class="op">||</span> d<span class="op">.</span><span class="at">v</span> <span class="op">&gt;</span> <span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (bad<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>            ok <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>            notes<span class="op">.</span><span class="fu">push</span>(<span class="vs">`out of [-1, 1] at sheet row(s) </span><span class="sc">${</span>bad<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">row</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>    results<span class="op">.</span><span class="fu">push</span>({ <span class="dt">field</span><span class="op">:</span> f<span class="op">.</span><span class="at">field</span><span class="op">,</span> <span class="dt">valid</span><span class="op">:</span> ok<span class="op">,</span> <span class="dt">notes</span><span class="op">:</span> notes<span class="op">.</span><span class="fu">join</span>(<span class="st">"; "</span>) })<span class="op">;</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> results<span class="op">;</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="viz-layout">
+<div class="viz-sidebar">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="110" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 109;"><span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>viewof csv_file <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">file</span>({ <span class="dt">label</span><span class="op">:</span> <span class="st">"Upload CSV"</span><span class="op">,</span> <span class="dt">accept</span><span class="op">:</span> <span class="st">".csv"</span> })</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>viewof csv_text <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">textarea</span>({</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"…or paste CSV text"</span><span class="op">,</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>  <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"study_ID,long_cite,short_cite,…"</span><span class="op">,</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rows</span><span class="op">:</span> <span class="dv">6</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>Validation runs against the <strong>required</strong> fields of the current spec (<code>metadata/spec.yaml</code>). Non-required fields are not checked.</p>
+</div>
+<div class="viz-main">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="122" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>candidate_rows <span class="op">=</span> {</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (csv_file) {</span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> text <span class="op">=</span> <span class="cf">await</span> csv_file<span class="op">.</span><span class="fu">text</span>()<span class="op">;</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> d3<span class="op">.</span><span class="fu">csvParse</span>(text)<span class="op">;</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (csv_text <span class="op">&amp;&amp;</span> csv_text<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>) <span class="cf">return</span> d3<span class="op">.</span><span class="fu">csvParse</span>(csv_text)<span class="op">;</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>validation <span class="op">=</span> candidate_rows <span class="op">?</span> <span class="fu">validate_rows</span>(candidate_rows) <span class="op">:</span> <span class="kw">null</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="129" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 128;"><span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>validation <span class="op">===</span> <span class="kw">null</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;p style="color:#777;"&gt;&lt;em&gt;Upload or paste a dataset to see results.&lt;/em&gt;&lt;/p&gt;`</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div style="display:flex; gap:0.75rem; margin-bottom: 0.75rem;"&gt;</span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="value-box"&gt;&lt;div class="vb-value"&gt;</span><span class="sc">${</span>candidate_rows<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="vb-label"&gt;Rows&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="value-box" style="background:</span><span class="sc">${</span>validation<span class="op">.</span><span class="fu">every</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">valid</span>) <span class="op">?</span> <span class="st">"#2e7d32"</span> <span class="op">:</span> <span class="st">"#c62828"</span><span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="vb-value"&gt;</span><span class="sc">${</span>validation<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="op">!</span>d<span class="op">.</span><span class="at">valid</span>)<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="vb-label"&gt;Failing fields&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb7--1"><a href="#cb7--1" aria-hidden="true" tabindex="-1"></a>validation <span class="op">===</span> <span class="kw">null</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">``</span> <span class="op">:</span> Inputs<span class="op">.</span><span class="fu">table</span>(</span>
+<span id="cb7-0"><a href="#cb7-0" aria-hidden="true" tabindex="-1"></a>  validation<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> ({ <span class="dt">Field</span><span class="op">:</span> d<span class="op">.</span><span class="at">field</span><span class="op">,</span> <span class="dt">Valid</span><span class="op">:</span> d<span class="op">.</span><span class="at">valid</span> <span class="op">?</span> <span class="st">"✅"</span> <span class="op">:</span> <span class="st">"❌"</span><span class="op">,</span> <span class="dt">Notes</span><span class="op">:</span> d<span class="op">.</span><span class="at">notes</span> }))<span class="op">,</span></span>
+<span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">rows</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> { <span class="dt">Field</span><span class="op">:</span> <span class="dv">220</span><span class="op">,</span> <span class="dt">Valid</span><span class="op">:</span> <span class="dv">60</span> } })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<section id="field-reference" class="level3">
+<h3 class="anchored" data-anchor-id="field-reference">Field reference</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb8--1"><a href="#cb8--1" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(spec<span class="op">.</span><span class="fu">map</span>((f) <span class="kw">=&gt;</span> ({</span>
+<span id="cb8-0"><a href="#cb8-0" aria-hidden="true" tabindex="-1"></a>  <span class="dt">field</span><span class="op">:</span> f<span class="op">.</span><span class="at">field</span><span class="op">,</span></span>
+<span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">type</span><span class="op">:</span> f<span class="op">.</span><span class="at">type</span> <span class="op">??</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> f<span class="op">.</span><span class="at">required</span> <span class="op">?</span> <span class="st">"yes"</span> <span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> f<span class="op">.</span><span class="at">description</span> <span class="op">??</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">options</span><span class="op">:</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(f<span class="op">.</span><span class="at">options</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span> f<span class="op">.</span><span class="at">options</span><span class="op">.</span><span class="fu">map</span>((o) <span class="kw">=&gt;</span> <span class="kw">typeof</span> o <span class="op">===</span> <span class="st">"object"</span> <span class="op">?</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(o)[<span class="dv">0</span>] <span class="op">:</span> o)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> (f<span class="op">.</span><span class="at">options</span> <span class="op">?</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(f<span class="op">.</span><span class="at">options</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>) <span class="op">:</span> <span class="st">""</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}))<span class="op">,</span> { <span class="dt">rows</span><span class="op">:</span> <span class="dv">20</span> })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
 
 
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIGlucHV0IHN0eWxpbmcgYWRhcHRlZCBmcm9tIGxldmFudGUtZGF0YXBhZ2U6IHBpbGwgbGFiZWxzLCBib3JkZXJsZXNzXG4vLyByb3VuZGVkIHNlbGVjdHMgKHNjb3BlZCB0byB0aGUgb2pzIG5hbWVzcGFjZSBjbGFzcylcbm9qc19ucyA9IElucHV0cy50ZXh0KCkuY2xhc3NMaXN0WzBdXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxzdHlsZT5cbiAgLiR7b2pzX25zfSBkaXYgbGFiZWwge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWYyZjY7XG4gICAgcGFkZGluZzogMC4ycmVtIDAuNXJlbTtcbiAgICBib3JkZXItcmFkaXVzOiAwLjRyZW07XG4gICAgbWFyZ2luLWJvdHRvbTogMC4yNXJlbTtcbiAgICB3aWR0aDogYXV0bztcbiAgfVxuXG4gIC4ke29qc19uc30gc2VsZWN0LFxuICAuJHtvanNfbnN9IGlucHV0W3R5cGU9XCJ0ZXh0XCJdLFxuICAuJHtvanNfbnN9IGlucHV0W3R5cGU9XCJmaWxlXCJdIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNkOGRlZTQ7XG4gICAgYm9yZGVyLXJhZGl1czogMC40cmVtO1xuICAgIHBhZGRpbmc6IDAuMnJlbSAwLjRyZW07XG4gIH1cblxuICAuJHtvanNfbnN9IGlucHV0W3R5cGU9XCJjaGVja2JveFwiXSB7XG4gICAgYWNjZW50LWNvbG9yOiAjMjc4MGUzO1xuICAgIG1hcmdpbi1ib3R0b206IDA7XG4gIH1cbjwvc3R5bGU+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic3BlYyA9IGQzLmpzb24oXCJzbGljZXMvc3BlYy5qc29uXCIpXG5cbi8vIHZhbGlkYXRpb24gcnVsZXMgcG9ydGVkIGZyb20gbWV0YWxhYnIgdmFsaWRhdGVfbWV0YWxhYl9kYXRhc2V0X2ZpZWxkLlI6XG4vLyAtIHJlcXVpcmVkIGZpZWxkcyBtdXN0IGJlIHByZXNlbnQgYXMgY29sdW1uc1xuLy8gLSBzaG9ydF9jaXRlIGFkZGl0aW9uYWxseTogbm8gbWlzc2luZyB2YWx1ZXMsIG1heCA2MCBjaGFyYWN0ZXJzXG4vLyAtIG9wdGlvbnMgZmllbGRzOiBhbGwgbm9uLW1pc3NpbmcgdmFsdWVzIHdpdGhpbiB0aGUgYWxsb3dlZCBvcHRpb25zXG4vLyAgIChudWxsYWJsZSBmaWVsZHMgZXhjdXNlIG1pc3NpbmcgdmFsdWVzKVxuLy8gLSBudW1lcmljIGZpZWxkczogbnVtZXJpYyBvciBlbnRpcmVseSBtaXNzaW5nXG4vLyAtIHIgYW5kIGNvcnIgYWRkaXRpb25hbGx5OiB3aXRoaW4gWy0xLCAxXVxudmFsaWRhdGVfcm93cyA9IChyb3dzKSA9PiB7XG4gIGlmICghcm93cyB8fCAhcm93cy5sZW5ndGgpIHJldHVybiBbXTtcbiAgY29uc3QgY29scyA9IG5ldyBTZXQoT2JqZWN0LmtleXMocm93c1swXSkpO1xuICBjb25zdCBpc01pc3NpbmcgPSAodikgPT4gdiA9PT0gbnVsbCB8fCB2ID09PSB1bmRlZmluZWQgfHwgU3RyaW5nKHYpLnRyaW0oKSA9PT0gXCJcIiB8fFxuICAgIFN0cmluZyh2KS50cmltKCkudG9VcHBlckNhc2UoKSA9PT0gXCJOQVwiO1xuICBjb25zdCByZXN1bHRzID0gW107XG4gIGZvciAoY29uc3QgZiBvZiBzcGVjKSB7XG4gICAgaWYgKCFmLnJlcXVpcmVkKSBjb250aW51ZTtcbiAgICBsZXQgb2sgPSB0cnVlLCBub3RlcyA9IFtdO1xuICAgIGlmICghY29scy5oYXMoZi5maWVsZCkpIHtcbiAgICAgIG9rID0gZmFsc2U7IG5vdGVzLnB1c2goXCJjb2x1bW4gbWlzc2luZ1wiKTtcbiAgICB9IGVsc2Uge1xuICAgICAgY29uc3QgdmFscyA9IHJvd3MubWFwKChyKSA9PiByW2YuZmllbGRdKTtcbiAgICAgIGNvbnN0IHByZXNlbnQgPSB2YWxzLmZpbHRlcigodikgPT4gIWlzTWlzc2luZyh2KSk7XG4gICAgICBpZiAoZi5maWVsZCA9PT0gXCJzaG9ydF9jaXRlXCIpIHtcbiAgICAgICAgY29uc3Qgbk1pc3NpbmcgPSB2YWxzLmxlbmd0aCAtIHByZXNlbnQubGVuZ3RoO1xuICAgICAgICBpZiAobk1pc3NpbmcgPiAwKSB7IG9rID0gZmFsc2U7IG5vdGVzLnB1c2goYCR7bk1pc3Npbmd9IG1pc3NpbmcgdmFsdWUocylgKTsgfVxuICAgICAgICBjb25zdCB0b29Mb25nID0gcHJlc2VudC5maWx0ZXIoKHYpID0+IFN0cmluZyh2KS5sZW5ndGggPiA2MCkubGVuZ3RoO1xuICAgICAgICBpZiAodG9vTG9uZyA+IDApIHsgb2sgPSBmYWxzZTsgbm90ZXMucHVzaChgJHt0b29Mb25nfSB2YWx1ZShzKSBvdmVyIDYwIGNoYXJhY3RlcnNgKTsgfVxuICAgICAgfVxuICAgICAgaWYgKGYudHlwZSA9PT0gXCJvcHRpb25zXCIpIHtcbiAgICAgICAgY29uc3QgYWxsb3dlZCA9IG5ldyBTZXQoXG4gICAgICAgICAgKEFycmF5LmlzQXJyYXkoZi5vcHRpb25zKSA/IGYub3B0aW9ucyA6IE9iamVjdC5rZXlzKGYub3B0aW9ucyA/PyB7fSkpXG4gICAgICAgICAgICAubWFwKChvKSA9PiB0eXBlb2YgbyA9PT0gXCJvYmplY3RcIiA/IE9iamVjdC5rZXlzKG8pWzBdIDogU3RyaW5nKG8pKSk7XG4gICAgICAgIGNvbnN0IGJhZCA9IFsuLi5uZXcgU2V0KHByZXNlbnQubWFwKFN0cmluZykpXS5maWx0ZXIoKHYpID0+ICFhbGxvd2VkLmhhcyh2KSk7XG4gICAgICAgIGlmIChiYWQubGVuZ3RoID4gMCkge1xuICAgICAgICAgIG9rID0gZmFsc2U7XG4gICAgICAgICAgbm90ZXMucHVzaChgaW52YWxpZCB2YWx1ZShzKTogJHtiYWQuc2xpY2UoMCwgNSkuam9pbihcIiwgXCIpfSR7YmFkLmxlbmd0aCA+IDUgPyBcIiwg4oCmXCIgOiBcIlwifWApO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgICBpZiAoZi50eXBlID09PSBcIm51bWVyaWNcIikge1xuICAgICAgICBjb25zdCBub25OdW0gPSBwcmVzZW50LmZpbHRlcigodikgPT4gIU51bWJlci5pc0Zpbml0ZSgrU3RyaW5nKHYpLnJlcGxhY2UoLywvZywgXCJcIikpKS5sZW5ndGg7XG4gICAgICAgIGlmIChub25OdW0gPiAwKSB7IG9rID0gZmFsc2U7IG5vdGVzLnB1c2goYCR7bm9uTnVtfSBub24tbnVtZXJpYyB2YWx1ZShzKWApOyB9XG4gICAgICAgIGlmIChbXCJyXCIsIFwiY29yclwiXS5pbmNsdWRlcyhmLmZpZWxkKSkge1xuICAgICAgICAgIGNvbnN0IGJhZCA9IHByZXNlbnRcbiAgICAgICAgICAgIC5tYXAoKHYsIGlkeCkgPT4gKHsgdjogK3YsIHJvdzogaWR4ICsgMiB9KSlcbiAgICAgICAgICAgIC5maWx0ZXIoKGQpID0+IE51bWJlci5pc0Zpbml0ZShkLnYpICYmIChkLnYgPCAtMSB8fCBkLnYgPiAxKSk7XG4gICAgICAgICAgaWYgKGJhZC5sZW5ndGggPiAwKSB7XG4gICAgICAgICAgICBvayA9IGZhbHNlO1xuICAgICAgICAgICAgbm90ZXMucHVzaChgb3V0IG9mIFstMSwgMV0gYXQgc2hlZXQgcm93KHMpICR7YmFkLnNsaWNlKDAsIDUpLm1hcCgoZCkgPT4gZC5yb3cpLmpvaW4oXCIsIFwiKX1gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gICAgcmVzdWx0cy5wdXNoKHsgZmllbGQ6IGYuZmllbGQsIHZhbGlkOiBvaywgbm90ZXM6IG5vdGVzLmpvaW4oXCI7IFwiKSB9KTtcbiAgfVxuICByZXR1cm4gcmVzdWx0cztcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBjc3ZfZmlsZSA9IElucHV0cy5maWxlKHsgbGFiZWw6IFwiVXBsb2FkIENTVlwiLCBhY2NlcHQ6IFwiLmNzdlwiIH0pXG5cbnZpZXdvZiBjc3ZfdGV4dCA9IElucHV0cy50ZXh0YXJlYSh7XG4gIGxhYmVsOiBcIuKApm9yIHBhc3RlIENTViB0ZXh0XCIsXG4gIHBsYWNlaG9sZGVyOiBcInN0dWR5X0lELGxvbmdfY2l0ZSxzaG9ydF9jaXRlLOKAplwiLFxuICByb3dzOiA2XG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiY2FuZGlkYXRlX3Jvd3MgPSB7XG4gIGlmIChjc3ZfZmlsZSkge1xuICAgIGNvbnN0IHRleHQgPSBhd2FpdCBjc3ZfZmlsZS50ZXh0KCk7XG4gICAgcmV0dXJuIGQzLmNzdlBhcnNlKHRleHQpO1xuICB9XG4gIGlmIChjc3ZfdGV4dCAmJiBjc3ZfdGV4dC50cmltKCkubGVuZ3RoID4gMCkgcmV0dXJuIGQzLmNzdlBhcnNlKGNzdl90ZXh0KTtcbiAgcmV0dXJuIG51bGw7XG59XG5cbnZhbGlkYXRpb24gPSBjYW5kaWRhdGVfcm93cyA/IHZhbGlkYXRlX3Jvd3MoY2FuZGlkYXRlX3Jvd3MpIDogbnVsbFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmFsaWRhdGlvbiA9PT0gbnVsbFxuICA/IGh0bWxgPHAgc3R5bGU9XCJjb2xvcjojNzc3O1wiPjxlbT5VcGxvYWQgb3IgcGFzdGUgYSBkYXRhc2V0IHRvIHNlZSByZXN1bHRzLjwvZW0+PC9wPmBcbiAgOiBodG1sYDxkaXYgc3R5bGU9XCJkaXNwbGF5OmZsZXg7IGdhcDowLjc1cmVtOyBtYXJnaW4tYm90dG9tOiAwLjc1cmVtO1wiPlxuICAgICAgPGRpdiBjbGFzcz1cInZhbHVlLWJveFwiPjxkaXYgY2xhc3M9XCJ2Yi12YWx1ZVwiPiR7Y2FuZGlkYXRlX3Jvd3MubGVuZ3RofTwvZGl2PlxuICAgICAgICA8ZGl2IGNsYXNzPVwidmItbGFiZWxcIj5Sb3dzPC9kaXY+PC9kaXY+XG4gICAgICA8ZGl2IGNsYXNzPVwidmFsdWUtYm94XCIgc3R5bGU9XCJiYWNrZ3JvdW5kOiR7dmFsaWRhdGlvbi5ldmVyeSgoZCkgPT4gZC52YWxpZCkgPyBcIiMyZTdkMzJcIiA6IFwiI2M2MjgyOFwifVwiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwidmItdmFsdWVcIj4ke3ZhbGlkYXRpb24uZmlsdGVyKChkKSA9PiAhZC52YWxpZCkubGVuZ3RofTwvZGl2PlxuICAgICAgICA8ZGl2IGNsYXNzPVwidmItbGFiZWxcIj5GYWlsaW5nIGZpZWxkczwvZGl2PjwvZGl2PlxuICAgIDwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZhbGlkYXRpb24gPT09IG51bGwgPyBodG1sYGAgOiBJbnB1dHMudGFibGUoXG4gIHZhbGlkYXRpb24ubWFwKChkKSA9PiAoeyBGaWVsZDogZC5maWVsZCwgVmFsaWQ6IGQudmFsaWQgPyBcIuKchVwiIDogXCLinYxcIiwgTm90ZXM6IGQubm90ZXMgfSkpLFxuICB7IHJvd3M6IDYwLCB3aWR0aDogeyBGaWVsZDogMjIwLCBWYWxpZDogNjAgfSB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiSW5wdXRzLnRhYmxlKHNwZWMubWFwKChmKSA9PiAoe1xuICBmaWVsZDogZi5maWVsZCxcbiAgdHlwZTogZi50eXBlID8/IFwiXCIsXG4gIHJlcXVpcmVkOiBmLnJlcXVpcmVkID8gXCJ5ZXNcIiA6IFwiXCIsXG4gIGRlc2NyaXB0aW9uOiBmLmRlc2NyaXB0aW9uID8/IFwiXCIsXG4gIG9wdGlvbnM6IEFycmF5LmlzQXJyYXkoZi5vcHRpb25zKVxuICAgID8gZi5vcHRpb25zLm1hcCgobykgPT4gdHlwZW9mIG8gPT09IFwib2JqZWN0XCIgPyBPYmplY3Qua2V5cyhvKVswXSA6IG8pLmpvaW4oXCIsIFwiKVxuICAgIDogKGYub3B0aW9ucyA/IE9iamVjdC5rZXlzKGYub3B0aW9ucykuam9pbihcIiwgXCIpIDogXCJcIilcbn0pKSwgeyByb3dzOiAyMCB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjc3ZfZmlsZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjc3ZfdGV4dCcpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
